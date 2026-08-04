@@ -52,6 +52,8 @@ function ActivateLyrics() {
       lyricsColorOpacity: "",
       inactiveLyricsColorOpacity: "",
       romanizeCheckbox: "",
+      fontFamily: "",
+      fontWeight: "",
     },
     function (data) {
       inactiveLyricsColor = data.inactiveLyricsColor;
@@ -167,13 +169,17 @@ function ActivateLyrics() {
           // Create a new style element
           var style = document.createElement("style");
           // Add CSS rules to the style element. You can replace the CSS inside the backticks with your own.
+          let fontStyles = "";
+          if (data.fontFamily) fontStyles += `\n              font-family: ${data.fontFamily} !important;`;
+          if (data.fontWeight) fontStyles += `\n              font-weight: ${data.fontWeight} !important;`;
+          
           style.innerHTML = `
             .nw6rbs8R08fpPn7RWW2w.aeO5D7ulxy19q4qNBrkk {
               opacity: 0.2;
             }
             .nw6rbs8R08fpPn7RWW2w {
               margin-top: 80px !important;
-              font-size: 60px !important;
+              font-size: 60px !important;${fontStyles}
             }
 
             .gqaWFmQeKNYnYD5gRv3x {
@@ -297,6 +303,8 @@ chrome.runtime.onInstalled.addListener(function (details) {
         lyricsColorOpacity: 1,
         inactiveLyricsColorOpacity: 0.5,
         romanizeCheckbox: false,
+        fontFamily: "",
+        fontWeight: "",
       },
       function () {
         console.log("Default values set on first install.");
