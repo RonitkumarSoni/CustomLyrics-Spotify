@@ -18,9 +18,10 @@
   "content_scripts": [
     {
       "matches": ["*://*.spotify.com/lyrics"],
-      "js": ["content.js", "dist/bundle.js"],
+      "js": ["html2canvas.min.js", "content.js", "dist/bundle.js"],
       "css": ["styles.css"]
     }
   ],
-  "permissions": ["activeTab", "storage"]
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": ["https://translate.googleapis.com/*"]
 }

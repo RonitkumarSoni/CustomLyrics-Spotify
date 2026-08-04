@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <script src="jscolor.js"></script>
   <link rel="stylesheet" href="styles.css">
-  <script src="popup.js"></script>
 </head>
 <body class="p-5">
   <div style="display: flex; justify-content: left; align-items: center; margin-bottom: 5px;">
@@ -30,15 +29,56 @@
       <input id="gradientSwitch" type="checkbox" class="switch">
       <label for="gradient" class="lalal">Gradient</label>
     </div>
-  </div>
-  <div class="LyricsAddon">
     <div class="checkbox-wrapper-14">
       
-      <input id="romanizeSwitch" type="checkbox" class="switch">
-      <label for="gradient" class="lalal">Romanize Korean</label>
+      <input id="karaokeSwitch" type="checkbox" class="switch">
+      <label for="karaoke" class="lalal">Karaoke Mode</label>
     </div>
-
+    
+    <div class="mt-2 pl-4 border-l-2 border-yellow-400">
+      <p class="text-xs text-yellow-600 font-bold mb-1">Advanced Karaoke (Pro 🔒)</p>
+      <div class="checkbox-wrapper-14 mb-1">
+        <input id="dualLangSwitch" type="checkbox" class="switch">
+        <label for="dualLang" class="lalal text-sm">Dual Language</label>
+      </div>
+      <div class="checkbox-wrapper-14 mb-2">
+        <input id="scoringSwitch" type="checkbox" class="switch">
+        <label for="scoring" class="lalal text-sm">Sing-along Score</label>
+      </div>
+      <button id="partyLinkBtn" class="bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold py-1 px-2 rounded w-full text-center">Copy Party Link</button>
+    </div>
   </div>
+  <div class="LyricsAddon mt-4">
+    <label for="romanizeLang" class="block font-bold mb-1">Romanize Lyrics:</label>
+    <select id="romanizeLang" name="romanizeLang" class="w-full p-1 border rounded">
+      <option value="none">None</option>
+      <option value="korean">Korean</option>
+      <option value="japanese">Japanese (Kana -> Romaji)</option>
+      <option value="chinese">Chinese (Pinyin)</option>
+      <option value="thai">Thai</option>
+    </select>
+  </div>
+  <div class="LyricsAddon mt-4">
+    <label for="translateLang" class="block font-bold mb-1">Translate Lyrics:</label>
+    <select id="translateLang" name="translateLang" class="w-full p-1 border rounded">
+      <option value="none">None</option>
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="es">Spanish</option>
+      <option value="fr">French</option>
+    </select>
+  </div>
+  <div class="mb-4 mt-2">
+    <label for="themeSelect" class="block font-bold">Pre-made Themes:</label>
+    <select id="themeSelect" class="w-full mt-1 p-1 border rounded">
+      <option value="">Custom</option>
+      <option value="midnight">Midnight Dark</option>
+      <option value="sunset">Sunset Vibes</option>
+      <option value="ocean">Ocean Breeze</option>
+      <option value="neon">Neon Night</option>
+      <option value="minimal">Minimal White</option>
+      <option value="custom_pro">💎 Custom Pro Theme</option>
+    </select>
   </div>
   <div class="grid grid-cols-2 gap-4">
     <div class="selector">
@@ -68,9 +108,15 @@
         <option value="'Inter', sans-serif">Inter</option>
         <option value="'Poppins', sans-serif">Poppins</option>
         <option value="'Roboto', sans-serif">Roboto</option>
-        <option value="'Comic Sans MS', cursive">Comic Sans</option>
-      </select>
-    </div>
+        <option value="Comic Sans MS, Comic Sans, cursive">Comic Sans</option>
+      <option value="'Dancing Script', cursive">Dancing Script (Pro 🔒)</option>
+      <option value="'Oswald', sans-serif">Oswald (Pro 🔒)</option>
+      <option value="'Pacifico', cursive">Pacifico (Pro 🔒)</option>
+      <option value="'Cinzel', serif">Cinzel (Pro 🔒)</option>
+      <option value="'Righteous', cursive">Righteous (Pro 🔒)</option>
+      <option value="custom_upload">Upload Custom Font (Pro 🔒)</option>
+    </select>
+  </div>
     <div class="selector">
       <label for="fontWeight" class="block">font weight:</label>
       <select id="fontWeight" name="fontWeight" class="w-full mt-5 p-1">
@@ -81,7 +127,81 @@
         <option value="900">Black (900)</option>
       </select>
     </div>
+    <div class="selector">
+      <label for="textAlign" class="block">text align:</label>
+      <select id="textAlign" name="textAlign" class="w-full mt-5 p-1">
+        <option value="">Default</option>
+        <option value="left">Left</option>
+        <option value="center">Center</option>
+        <option value="right">Right</option>
+      </select>
+    </div>
   </div>
+  
+  <div class="mt-4 border-t-2 border-yellow-400 pt-4">
+    <button id="screenshotBtn" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded transition-colors mb-2">📸 Screenshot Lyrics (Alt+S)</button>
+  </div>
+  
+  <div class="mt-2 border-t-2 border-yellow-400 pt-4">
+    <h2 class="text-xl font-bold text-yellow-600 mb-2">💎 Pro Features</h2>
+    
+    <label for="animatedBg" class="block font-bold mb-1">Animated Background:</label>
+    <select id="animatedBg" name="animatedBg" class="w-full p-1 border border-yellow-400 rounded">
+      <option value="none">None</option>
+      <option value="album_blur">Album Art Blur</option>
+      <option value="particles">Floating Particles</option>
+    </select>
+
+    <label for="textEffect" class="block font-bold mb-1 mt-3">Text Effects:</label>
+    <select id="textEffect" name="textEffect" class="w-full p-1 border border-yellow-400 rounded mb-3">
+      <option value="none">None</option>
+      <option value="rainbow">🌈 Rainbow Text</option>
+      <option value="neon">⚡ Neon Glow</option>
+      <option value="3d">🧊 3D Block</option>
+    </select>
+
+    <div id="customFontSection" class="hidden mb-3">
+      <label class="block font-bold mb-1 text-sm">Upload Custom Font (.ttf, .woff):</label>
+      <input type="file" id="customFontUpload" accept=".ttf,.woff,.woff2" class="w-full text-xs">
+      <p id="fontUploadStatus" class="text-xs text-green-400 mt-1 hidden">Font saved!</p>
+    </div>
+
+    <div class="border-t border-yellow-600 pt-3 mb-3">
+      <div class="checkbox-wrapper-14 mb-2">
+        <input id="useCustomLyrics" type="checkbox" class="switch">
+        <label for="useCustomLyrics" class="lalal text-sm text-yellow-200">Override Spotify Lyrics</label>
+      </div>
+      <div class="checkbox-wrapper-14 mb-2">
+        <input id="autoMoodTheme" type="checkbox" class="switch">
+        <label for="autoMoodTheme" class="lalal text-sm text-yellow-200">🎭 Auto-Theme by Mood (AI)</label>
+      </div>
+      <div class="checkbox-wrapper-14 mb-2">
+        <input id="playlistIntegration" type="checkbox" class="switch">
+        <label for="playlistIntegration" class="lalal text-sm text-yellow-200">🔗 Show Lyric-Based Recommendations</label>
+      </div>
+      <div class="checkbox-wrapper-14 mb-2">
+        <input id="syncFix" type="checkbox" class="switch">
+        <label for="syncFix" class="lalal text-sm text-yellow-200">🎙️ Enable Live Sync Fix (+/- offset)</label>
+      </div>
+      <button id="openLyricsEditorBtn" class="w-full bg-yellow-700 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded mb-2 transition-colors">📝 Open Custom Lyrics Editor</button>
+      
+      <div class="mt-4 border-t border-yellow-800 pt-3">
+        <h3 class="text-xs text-yellow-500 uppercase tracking-wider mb-2 font-bold">☁️ Cloud Sync (Pro)</h3>
+        <div class="flex gap-2">
+          <button id="backupCloudBtn" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-2 px-2 rounded transition-colors">⬆️ Backup</button>
+          <button id="restoreCloudBtn" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-2 px-2 rounded transition-colors">⬇️ Restore</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="border-t border-yellow-600 pt-3 mb-3">
+      <button id="openWidgetBtn" class="w-full bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-2">🎧 Pop Out Floating Widget</button>
+      <button id="openStatsBtn" class="w-full bg-green-700 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">📊 Open Listening Stats</button>
+    </div>
+    
+    <button id="openThemeBuilderBtn" class="w-full bg-yellow-600 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">🎨 Open Custom Theme Builder</button>
+  </div>
+
   <div class="mt-5 d-flex align-items-center">
     <button id="save" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Apply</button>
     <p>Hit Refresh when not work</p>
@@ -97,5 +217,14 @@
     </a>
     <br>
   </div>
+  
+  <!-- Ad Banner (Shown only to Free users) -->
+  <div id="adBanner" class="mt-4 p-3 bg-gradient-to-r from-purple-800 to-indigo-900 rounded border border-purple-500 text-center animate-pulse" style="display: none;">
+    <div class="text-sm font-bold text-white mb-1">🎵 Hate Ads? Want More?</div>
+    <div class="text-xs text-purple-200 mb-2">Unlock 50+ Premium Fonts & AI Themes!</div>
+    <button class="bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold py-1 px-3 rounded-full transition-colors">Get Pro for $1.99/mo</button>
+  </div>
+  
+  <script src="popup.js"></script>
 </body>
 </html>
