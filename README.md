@@ -1,57 +1,29 @@
-# Custom Lyrics for chrome
-If you find this project useful, please consider giving it a ⭐️. Thanks!
+# LyricsPlus — Read Along
 
-## Note
-### Spicetify
-this was build ontop of lyrics plus custom app. if you use spicetify you must have [lyrics-plus](https://github.com/spicetify/spicetify-cli/blob/master/CustomApps/lyrics-plus/README.md) custom apps to install run
-```bash
-spicetify config custom_apps lyrics-plus
-spicetify apply
-```
-### Chrome Extension
-if you use want to use the chrome extension you can download [latest release](https://github.com/dupitydumb/LyricsPlus-Spotify/tree/main/LyricsPlus) or [latest push](https://github.com/dupitydumb/LyricsPlus-Spotify/releases/tag/V0.3))
+LyricsPlus is an independent Chrome extension for the Spotify web player. It makes lyrics easier to read and can show an optional pronunciation line for Korean, Japanese kana, Chinese pinyin and Thai. It keeps Spotify's original lyrics available and does not provide lyrics for tracks where Spotify has none.
 
-[![Stars Badge](https://img.shields.io/github/stars/dupitydumb/LyricsPlus-Spotify?style=social)](https://github.com/dupitydumb/LyricsPlus-Spotify)
-## Features
-* Korean romanization
-* Change lyrics color
-* Change background color
-* Beautiful background
-* Glow effect
+This repository also contains the older Spicetify experiment in `Spicetify/` and legacy prototype files in `LyricsPlus/`. The Chrome release is defined by `LyricsPlus/manifest.json`; see `LyricsPlus/RELEASE.md` for the exact package contents.
 
-## Customization
+## Current features
 
-Customize your own lyrics with our Chrome extension. 
+- Original lyrics, pronunciation only, or both together
+- Adjustable text size and line spacing
+- High contrast and reduced motion options
+- Settings synced with Chrome's extension storage
+- One switch to turn enhancement on or off
 
+Japanese conversion currently handles kana; mixed kanji text needs separate reading support. Pronunciation output can contain mistakes with names, slang and mixed-language lines. Spotify's native translations remain available where Spotify provides them; this extension does not translate lyrics.
 
-#### UI
-![image](https://github.com/dupitydumb/LyricsPlus-Spotify/assets/37872714/a57cf1a8-5863-4585-8b6c-f5f3640535ea)
+## Build and install for testing
 
-### Glow And Gradient
-![image](https://github.com/dupitydumb/LyricsPlus-Spotify/assets/37872714/a06b186a-d3ba-4db9-8865-8061ddeda643)
+1. Run `npm ci`, `npm test` and `npm run build` inside `LyricsPlus/`.
+2. In Chrome, visit `chrome://extensions`, enable Developer mode and choose **Load unpacked**.
+3. Select the `LyricsPlus/` directory, then open `https://open.spotify.com/lyrics`.
 
+The release package contains only the files listed in `LyricsPlus/RELEASE.md`. Unpacked development installs include legacy files, but the manifest does not load them.
 
-## Installation Guide Chrome
+## Feedback
 
-Follow these steps to install the extension:
+Report a reproducible issue at [GitHub Issues](https://github.com/dupitydumb/LyricsPlus-Spotify/issues). Include the browser version, track link, source language and what appeared. Do not paste full copyrighted song lyrics into a report.
 
-1. **Download the Extension Files**: The extension files can be downloaded from the [Latest release](https://github.com/dupitydumb/LyricsPlus-Spotify/releases/) or the latest push. Extract the ZIP file to a location of your choice.
-
-2. **Open Chrome Extensions Page**: Open the Chrome browser and navigate to `chrome://extensions`. This will open the Extensions page.
-
-3. **Enable Developer Mode**: In the top right corner of the Extensions page, there's a toggle for "Developer mode". Turn this on.
-
-4. **Load Unpacked Extension**: Click on the "Load unpacked" button that appears when Developer mode is enabled. This will open a file selection dialog.
-
-5. **Select the Extension Directory**: In the file selection dialog, navigate to the location where you extracted the ZIP file. Select the directory and click "Open".
-
-## Reporting Bugs
-
-If you encounter any bugs, please report them by clicking the button below:
-
-[![Report bug](https://img.shields.io/badge/report-bug-red)](https://github.com/dupitydumb/LyricsPlus-Spotify/issues/new)
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=dupitydumb/CustomLyrics-Spotify&type=Date)](https://star-history.com/#dupitydumb/CustomLyrics-Spotify&Date)
-
+The independent product plan and research notes are in [PRODUCT_RESEARCH_PLAN.md](PRODUCT_RESEARCH_PLAN.md). This extension is not affiliated with or endorsed by Spotify.
